@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const main = require("./main");
+const healthRoute = require("./health");
 
 // Post routes
-router.use("/main", main);
+router.use("/health", healthRoute);
 
 module.exports = router;
 
