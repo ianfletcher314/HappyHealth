@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const healthController = require("../../../../controllers/healthController")
+const healthController = require("../../controllers/healthController")
 
 router.route("/")
     .get(healthController.findAll)
