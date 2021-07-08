@@ -96,6 +96,11 @@ function ResponsiveDrawer(props) {
       onClick: () => history.push('/ingredients')
     },
     {
+      text: "Recipes",
+      icon:<FormatListNumberedIcon />,
+      onClick: () => history.push('/recipes')
+    },
+    {
       text: "Sign Up",
       icon:<EditIcon />,
       onClick: () => history.push('/signup')
