@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import './style.css'
 
 
 function Copyright() {
@@ -52,10 +52,21 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
+    <div className="home-body">
+      <h1>Enter Text Into the Fields</h1>
     <Container component="main" maxWidth="xs">
-<Typography>
-  Shopping!!!!
-</Typography>
+        <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="shopping"
+            label="Shopping"
+            type="shopping"
+            id="shopping"
+            autoComplete="current-shopping"
+          />
     </Container>
+    </div>
   );
 }

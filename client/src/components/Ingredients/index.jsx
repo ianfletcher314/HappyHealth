@@ -12,21 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        HappyHealth
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import './style.css'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -52,10 +38,21 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
+    <div className="home-body">
+      <h1>Enter Text Into the Fields</h1>
     <Container component="main" maxWidth="xs">
-<Typography>
-  Ingredients!!!!
-</Typography>
+        <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="ingredients"
+            label="Ingredients"
+            type="ingredients"
+            id="ingredients"
+            autoComplete="current-ingredients"
+          />
     </Container>
+    </div>
   );
 }
