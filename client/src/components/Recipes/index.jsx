@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Container from '@material-ui/core/Container';
 // import MealList from "../Meals";
 //./src/components/Meals/index.jsx AND Cannot find file: 'index.js' does not match the corresponding name on disk: './node_modules/React/react'.
 // Getting the above error when I uncomment the MealList import
@@ -37,6 +38,7 @@ export default function Recipes() {
     }
 
     return (
+<div className="home-body">
     <div classname="App">
         <section className="controls">
             <input
@@ -46,5 +48,6 @@ export default function Recipes() {
         </section>
         <button onClick={getMealData}>Get Daily Meal Plan</button>
     </div>
+</div>
     );
 }
