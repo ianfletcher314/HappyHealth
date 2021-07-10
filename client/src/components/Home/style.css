@@ -1,5 +1,30 @@
-body{
+.home-body{
   margin-left:200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-body {
+    margin-left:auto;
+  }
+  .upper-h1{
+    line-height:150%;
+    padding-left:15%;
+    padding-top:8%;
+    color:white;
+    margin:0%;
+    font-size:15px;
+    background-color:rgba(56, 56, 56, 0.541);
+  }
+  .bottom-h1{
+    padding-bottom:5%;
+    line-height:150%;
+    padding-left:15%;
+    padding-top:8%;
+    color:white;
+    margin:0%;
+    font-size:35vw;
+    background-color:rgba(56, 56, 56, 0.541);
+  }
 }
 
 .section1{
@@ -17,7 +42,7 @@ body{
   padding-top:8%;
   color:white;
   margin:0%;
-  font-size:3vw;
+  font-size:3.3vw;
   background-color:rgba(56, 56, 56, 0.541);
 }
 
@@ -28,13 +53,7 @@ body{
   padding-top:8%;
   color:white;
   margin:0%;
-  font-size:3vw;
+  font-size:3.3vw;
   background-color:rgba(56, 56, 56, 0.541);
 }
 
-
-@media only screen and (max-width: 600px) {
-    body {
-      margin-left:auto;
-    }
-  }
