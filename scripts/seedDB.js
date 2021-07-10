@@ -1,10 +1,23 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-// This file empties the Books collection and inserts the books below
+
+//USE THIS CONNECTION FOR MONGO HEROKU CONNECTION
+// mongoose.connect(
+//   process.env.MONGODB_URI ||
+//   "mongodb://localhost/happyhealth"
+// );
+
+//COMMENT THIS CONNNECTION OUT WHEN USING ABOVE CONNECTION
 mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/happyhealth"
+  process.env.MONGODB_URI || "mongodb+srv://happyhealth:password12345@cluster0.iidhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
 );
+
 const userSeed = [
   {
     username: "spenserlogan",
