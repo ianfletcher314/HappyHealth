@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import Container from '@material-ui/core/Container';
-// import MealList from "../Meals";
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import MealList from "../MealList";
+import TextField from '@material-ui/core/TextField';
 //./src/components/Meals/index.jsx AND Cannot find file: 'index.js' does not match the corresponding name on disk: './node_modules/React/react'.
 // Getting the above error when I uncomment the MealList import
 import "./styles.css"
-
-
-
-//@Kyle I cannot get the input field to show up anywhere on the Recipes page. To continue on with the API implementation, I have to have it. 
-//I thought that it was maybe hideden behind the header or something since there isn't any styling, but I couldn't figure it out.
-//Let me know once you get the input field and button to show up so I can continue/finish API implementation.
-
 
 
 export default function Recipes() {
@@ -39,14 +35,32 @@ export default function Recipes() {
 
     return (
 <div className="home-body">
-    <div classname="App">
-        <section className="controls">
-            <input
+    <div className="App">
+    <Container component="main" maxWidth="xs">
+        <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             type="number"
+            name="calories"
+            label="Calories"
+            type="calories"
+            id="calories"
             placeholder="Calories (e.g. 2000)"
-            onChange={handleChange} />
-        </section>
-        <button onClick={getMealData}>Get Daily Meal Plan</button>
+            onChange={handleChange}
+          />
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={getMealData}
+          >
+            Get Daily Meal Plan
+          </Button>
+          </Container>
+        {mealData && <MealList mealData={mealData} />}
     </div>
 </div>
     );

@@ -1,0 +1,8 @@
+.meals{
+ display:flex;
+ flex-wrap: wrap;
+}
+
+.nutrients{
+text-align:center;
+}
