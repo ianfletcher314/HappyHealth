@@ -1,4 +1,10 @@
 import React, {useState, useEffect} from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 export default function Meal({meal}) {
     const [imageUrl, setImageURl] = useState("");
@@ -24,6 +30,9 @@ export default function Meal({meal}) {
             <li>Number of Servings: {meal.servings}</li>
         </ul>
 
+        <a href={meal.sourceUrl}>Go to Recipe</a>
+            <li>Preparation time: {meal.readyInMinutes} minutes.</li>
+            <li>Number of Servings: {meal.servings}</li>
         <a href={meal.sourceUrl}>Go to Recipe</a>
     </article>
 }
