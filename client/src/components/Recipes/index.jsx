@@ -3,7 +3,6 @@ import Container from '@material-ui/core/Container';
 import MealList from "../MealList";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import MealList from "../MealList";
 import TextField from '@material-ui/core/TextField';
 //./src/components/Meals/index.jsx AND Cannot find file: 'index.js' does not match the corresponding name on disk: './node_modules/React/react'.
 // Getting the above error when I uncomment the MealList import
@@ -50,10 +49,6 @@ export default function Recipes() {
             id="calories"
             placeholder="Calories (e.g. 2000)"
             onChange={handleChange} />
-        </section>
-        <button onClick={getMealData}>Get Daily Meal Plan</button>
-            onChange={handleChange}
-          />
         <Button
             type="submit"
             fullWidth
