@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Container from '@material-ui/core/Container';
+import MealList from "../MealList";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import MealList from "../MealList";
@@ -48,6 +49,9 @@ export default function Recipes() {
             type="calories"
             id="calories"
             placeholder="Calories (e.g. 2000)"
+            onChange={handleChange} />
+        </section>
+        <button onClick={getMealData}>Get Daily Meal Plan</button>
             onChange={handleChange}
           />
         <Button
