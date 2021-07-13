@@ -116,6 +116,24 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => {
+              const data = { username: " ", password: " "}
+              fetch('https://immense-harbor-21762.herokuapp.com/api/user', {
+
+                  method: 'POST', // or 'PUT'
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log('Success:', data);
+                  })
+                  .catch((error) => {
+                    console.error('Error:', error);
+                  });
+            }}
           >
             Sign Up
           </Button>
