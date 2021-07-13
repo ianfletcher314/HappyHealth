@@ -8,6 +8,7 @@ import Ingredients from "./components/Ingredients";
 import SignUp from "./components/SignUp";
 import SignInSide from "./components/SignInSide"
 import Profile from "./components/Profile"
+import Favorites from "./components/Favorites"
 import Recipes from "./components/Recipes";
 
 
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/shopping" component={Shopping} />
           <Route exact path="/ingredients" component={Ingredients} />
           <Route exact path="/recipes" component={Recipes} />
+          <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/signup" component={SignUp} />
       </div>
     </Router>
