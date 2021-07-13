@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Container from '@material-ui/core/Container';
 import MealList from "../MealList";
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 //./src/components/Meals/index.jsx AND Cannot find file: 'index.js' does not match the corresponding name on disk: './node_modules/React/react'.
 // Getting the above error when I uncomment the MealList import
 import "./styles.css"
@@ -32,14 +35,30 @@ export default function Recipes() {
 
     return (
 <div className="home-body">
-    <div classname="App">
-        <section className="controls">
-            <input
+    <div className="App">
+    <Container component="main" maxWidth="xs">
+        <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             type="number"
+            name="calories"
+            label="Calories"
+            type="calories"
+            id="calories"
             placeholder="Calories (e.g. 2000)"
             onChange={handleChange} />
-        </section>
-        <button onClick={getMealData}>Get Daily Meal Plan</button>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={getMealData}
+          >
+            Get Daily Meal Plan
+          </Button>
+          </Container>
         {mealData && <MealList mealData={mealData} />}
     </div>
 </div>

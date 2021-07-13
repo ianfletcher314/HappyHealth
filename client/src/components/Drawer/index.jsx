@@ -22,6 +22,7 @@ import StoreIcon from '@material-ui/icons/Store';
 import EditIcon from '@material-ui/icons/Edit';
 import PersonIcon from '@material-ui/icons/Person';
 import './style.css'
+import FastfoodIcon from '@material-ui/icons/Fastfood';
 
 
 const drawerWidth = 200;
@@ -99,6 +100,11 @@ function ResponsiveDrawer(props) {
       text: "Recipes",
       icon:<FormatListNumberedIcon />,
       onClick: () => history.push('/recipes')
+    },
+    {
+      text: "Favorites",
+      icon:<FastfoodIcon />,
+      onClick: () => history.push('/favorites')
     },
     {
       text: "Sign Up",
