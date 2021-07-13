@@ -21,6 +21,7 @@ import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import StoreIcon from '@material-ui/icons/Store';
 import EditIcon from '@material-ui/icons/Edit';
 import PersonIcon from '@material-ui/icons/Person';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
 import './style.css'
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 
@@ -85,6 +86,11 @@ function ResponsiveDrawer(props) {
       text: "Profile",
       icon:<PersonIcon />,
       onClick: () => history.push('/profile')
+    },
+    {
+      text: "Favorites",
+      icon:<FastfoodIcon />,
+      onClick: () => history.push('/favorites')
     },
     {
       text: "Shopping List",

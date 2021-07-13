@@ -64,3 +64,12 @@ export default function Recipes() {
 </div>
     );
 }
+
+/* upon  favorites button press we need 
+
+- the chosen meal item to be pushed into the database/favorites tab unique to that user.
+
+- 
+
+
+*/
