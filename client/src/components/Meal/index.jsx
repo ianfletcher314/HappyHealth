@@ -25,12 +25,6 @@ export default function Meal({meal}) {
     return <article>
         <h1>{meal.title}</h1>
         <img src= {imageUrl} alt="recipe" />
-        <ul>
-            <li>Preparation time: {meal.readyInMinutes} minutes.</li>
-            <li>Number of Servings: {meal.servings}</li>
-        </ul>
-
-        <a href={meal.sourceUrl}>Go to Recipe</a>
             <li>Preparation time: {meal.readyInMinutes} minutes.</li>
             <li>Number of Servings: {meal.servings}</li>
         <a href={meal.sourceUrl}>Go to Recipe</a>
