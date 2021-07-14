@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+// const User = require("./models/User");
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
@@ -13,6 +14,18 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+
+// const userInput = {
+//   username: "spenserlogan",
+//   password: "password12345"
+// }
+
+// const user = new User(userInput);
+// user.save((err, document) => {
+//   if(err)
+//     console.log(err);
+//   console.log(document);
+// })
   
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");

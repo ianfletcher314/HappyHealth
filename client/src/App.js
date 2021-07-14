@@ -25,6 +25,7 @@ const App = () => {
           <Route exact path="/recipes" component={Recipes} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/favorites" component={Favorites} />
       </div>
     </Router>
   );
