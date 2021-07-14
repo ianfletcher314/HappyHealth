@@ -17,6 +17,7 @@ const userInput = {
 
 router.post('/', async (req, res) => {
     console.log("the route is working");
+    console.log(req.body)
     User.create(req.body)
       .then((user) => {
         // if there's product tags, we need to create pairings to bulk create in the ProductTag model

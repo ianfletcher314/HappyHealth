@@ -10,7 +10,6 @@ import SignInSide from "./components/SignInSide"
 import Profile from "./components/Profile"
 import Favorites from "./components/Favorites"
 import Recipes from "./components/Recipes";
-import Favorites from "./components/Favorites";
 
 const App = () => {
   document.title = "HappyHealth";

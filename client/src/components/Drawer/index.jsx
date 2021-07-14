@@ -23,7 +23,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import PersonIcon from '@material-ui/icons/Person';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import './style.css'
-import FastfoodIcon from '@material-ui/icons/Fastfood';
 
 
 const drawerWidth = 200;
