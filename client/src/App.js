@@ -11,7 +11,6 @@ import Profile from "./components/Profile"
 import Favorites from "./components/Favorites"
 import Recipes from "./components/Recipes";
 
-
 const App = () => {
   document.title = "HappyHealth";
   return (
