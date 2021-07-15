@@ -4,15 +4,16 @@ import './style.css'
 import Container from '@material-ui/core/Container';
 
 
+import axios from 'axios'
 
 export default function Meal({meal}) {
     const [imageUrl, setImageURl] = useState("");
     
-    function sendMealData(props) {
-    return <><h1>{meal.title}</h1>
-           <a href = {meal.sourceUrl}></a></> 
+    // function sendMealData(props) {
+    // return <><h1>{meal.title}</h1>
+    //        <a href = {meal.sourceUrl}></a></> 
 
-    }
+    // }
 
     useEffect(()=>{
         fetch(
@@ -26,6 +27,20 @@ export default function Meal({meal}) {
             console.log("error");
         })
     }, [meal.id])
+
+
+
+    function favoritesData(event) {
+        event.preventDefault()
+        const data = { title: meal.title, url: meal.sourceUrl, id: meal.id}
+        axios.put('/api/user', data ) //what is api/user - what does this need to be?
+            .then(data => {
+              console.log('Success:', data);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+    }
 
     return <article>
         <Container>
@@ -47,7 +62,7 @@ export default function Meal({meal}) {
             fullWidth
             variant="contained"
             color="primary"
-            onClick={sendMealData}
+            onClick={favoritesData}
           >
         <a href={meal.sourceUrl} target="_blank">Go to Recipe</a>
                   </Button>
@@ -59,7 +74,7 @@ export default function Meal({meal}) {
             fullWidth
             variant="contained"
             color="primary"
-            onClick={sendMealData}
+            onClick={favoritesData}
           >
             Add to Favorites
           </Button>
@@ -67,5 +82,4 @@ export default function Meal({meal}) {
      </div>
      </Container>
     </article>
-    
 }

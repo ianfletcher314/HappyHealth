@@ -71,4 +71,26 @@ router.post('/login', (req, res) => {
     })
 });
 
+
+router.put("/api/user/:id", (req, res) => {
+
+  db.User.update( //find the user where the id is equal to the session id
+      { _id: req.params.id },
+      {
+          $push: { favorites: req.body } //this pushes to array model db
+      },
+      { new: true }).then(dbUser => {
+          res.json(dbUser);
+      }).catch(err => {
+          res.json(err);
+      });
+
+});
+
+
+
+
+
+
+
 module.exports = router;

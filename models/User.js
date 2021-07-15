@@ -25,7 +25,23 @@ const UserSchema = new Schema({
     userCreated: {
         type: Date,
         default: Date.now
+    },
+    favorites: [
+        {
+        title : {
+            type: String,
+            trim: true,
+        },
+        url : {
+            type: String,
+            trim: true,
+        },
+        id : {
+            type: String,
+            trim: true,
+        }
     }
+    ]
 });
 
 UserSchema.pre("save", function(next) {
