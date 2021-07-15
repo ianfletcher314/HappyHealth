@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios'
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -31,13 +33,37 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+
+
 export default function Profile() {
   const classes = useStyles();
+  
+  const [favoritesData, setFavoritesData] = useState(null)
+  
+  useEffect(() => {
+
+    axios.get('/api/user/:id')
+    .then((response) => {
+      const data = response.data;
+
+    })
+
+  }, [])
+
+  
   return (
     <Container component="main" maxWidth="xs">
 <Typography>
-  Favorites!
+  Favorites! 
 </Typography>
+{/* <card className="favorites">
+    {favoritesData.data.map((info)=>{
+        return <Data key={info.id} info={info} />;
+    })}
+</card> */}
     </Container>
   );
+
+  
 }

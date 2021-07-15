@@ -1,7 +1,7 @@
-const router = require("express").Router();
-const healthController = require("../../controllers/healthController")
+// const router = require("express").Router();
+// const healthController = require("../../controllers/healthController")
 
-router.route("/")
-    .get(healthController.findAll)
+// router.route("/")
+//     .get(healthController.findAll)
 
-module.exports = router;
+// module.exports = router;

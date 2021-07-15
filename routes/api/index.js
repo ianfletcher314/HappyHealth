@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const healthRoute = require("./health");
+// const healthRoute = require("./health");
 const User = require("./user");
 
 // Post routes
