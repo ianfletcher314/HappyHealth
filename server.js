@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const session = require("express-session");
+const MongoStore = require('connect-mongo');
 // const User = require("./models/User");
 const PORT = process.env.PORT || 3001;
 
@@ -14,6 +16,20 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+
+const sess = {
+  secret: 'SECRET KEY',
+  cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://localhost/happyhealth', //YOUR MONGODB URL
+        ttl: 14 * 24 * 60 * 60,
+        autoRemove: 'native' 
+    })
+};
+
+app.use(session(sess));
 
 // const userInput = {
 //   username: "spenserlogan",
