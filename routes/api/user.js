@@ -42,35 +42,73 @@ router.post('/', async (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
-  User.findOne({
-      username: req.body.username
+
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({
+            username: req.body.username
+          });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' ,userData });
+      return;
     }
-)
-    .then(dbUserData => {
-      console.log(req.body)
-      if(!dbUserData) {
-        res.status(400).json({message: "No user with that username!" });
-        return;
-      }
-      const validPassword = dbUserData.comparePassword(req.body.password);
-      if (!validPassword) {
-        res.status(400).json({message: "Incorrect password!" });
-        return;
-      }
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
-        req.session.loggedIn = true;
-        res.json({user: dbUserData, message: "You are now logged in!" });
-      })
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    })
+
+    // VALID PASSWORD IS UNDEFINED FOR SOME REASON HOWEVER COMPARE PASSWORD IS WORKING!
+    const validPassword = await userData.comparePassword(req.body.password);
+    console.log("valid pass", validPassword)
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again + valid pass' ,userData, validPassword });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
+// old route
+// router.post('/login', async(req, res) => {
+//   User.findOne({
+//       username: req.body.username
+//     }
+// )
+//     .then(dbUserData => {
+//       console.log(req.body,"request",dbUserData)
+//       if(!dbUserData) {
+//         res.status(400).json({message: "No user with that username!" });
+//         return;
+//       }
+//       const validPassword =dbUserData.comparePassword(req.body.password);
+//       if (!validPassword) {
+//         console.log(req.body,"request and valid pass",validPassword,)
+//         res.status(400).json({message: "Incorrect password!" });
+//         return;
+//       }
+//       req.session.save(() => {
+//         req.session.user_id = dbUserData.id;
+//         req.session.username = dbUserData.username;
+//         req.session.loggedIn = true;
+//         res.json({user: dbUserData, message: "You are now logged in!" });
+//       })
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     })
+// });
 
 router.put("/api/user/:id", (req, res) => {
 

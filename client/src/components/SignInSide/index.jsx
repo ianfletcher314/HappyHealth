@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios'
 import './style.css'
 
 function Copyright() {
@@ -50,6 +51,35 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+
+  const [userPassword, setUserPassword] = useState("")
+  const [userName, setUserName] = useState("")
+  
+
+    function handleNameInputChange(event) {
+      const value = event.target.value;
+      console.log(value)
+      setUserName(value)
+      
+    }
+    function handlePasswordInputChange(event) {
+      const value = event.target.value;
+      console.log(value)
+      setUserPassword(value)
+      
+    }
+    function loginRequest(event) {
+        event.preventDefault()
+        const data = { username: userName, password: userPassword}
+        axios.post('/api/user/login', data )
+            .then(data => {
+              console.log('Success:', data);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+    }
+
   return (
     <div className="home-body">
     <Container component="main" maxWidth="xs">
@@ -67,11 +97,13 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Username"
+            name="username"
+            autoComplete="username"
             autoFocus
+            onChange={handleNameInputChange}
+            value={userName}
           />
           <TextField
             variant="outlined"
@@ -83,6 +115,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handlePasswordInputChange}
+            value={userPassword}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -94,6 +128,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={loginRequest}
           >
             Sign In
           </Button>
