@@ -10,7 +10,7 @@ const nutrients = mealData.nutrients;
     return <main>
         <section className="nutrients">
                 <Container component="main" maxWidth="md"></Container>
-            <h1 className="macros-heading">Nutrients</h1>
+            <h2 className="macros-heading">Nutrients</h2>
                 <li>Calories: {nutrients.calories.toFixed(0)}</li>
                 <li>Carbohydrates: {nutrients.carbohydrates.toFixed(0)}</li>
                 <li>Fat:{nutrients.fat.toFixed(0)}</li>
