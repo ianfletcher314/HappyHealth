@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -39,27 +39,31 @@ const useStyles = makeStyles((theme) => ({
 export default function Profile() {
   const classes = useStyles();
   
-  // const [favoritesData, setFavoritesData] = useState("")
+  const [favoritesData, setFavoritesData] = useState(null)
   
-  
-  // getFavoritesData = () => {
-  //   axios.get('/api/user/:id')
-  //     .then((response) => {
-  //       const data = response.data;
+  useEffect(() => {
 
-  //     })
-  // }
-  
-  
-  
-  
-  
+    axios.get('/api/user/:id')
+    .then((response) => {
+      const data = response.data;
+
+    })
+
+  }, [])
+
   
   return (
     <Container component="main" maxWidth="xs">
 <Typography>
   Favorites! 
 </Typography>
+{/* <card className="favorites">
+    {favoritesData.data.map((info)=>{
+        return <Data key={info.id} info={info} />;
+    })}
+</card> */}
     </Container>
   );
+
+  
 }

@@ -33,7 +33,7 @@ export default function Meal({meal}) {
     function favoritesData(event) {
         event.preventDefault()
         const data = { title: meal.title, url: meal.sourceUrl, id: meal.id}
-        axios.put('/api/user', data ) //what is api/user - what does this need to be?
+        axios.put('/api/user/:id', data ) //what is api/user - what does this need to be?
             .then(data => {
               console.log('Success:', data);
             })
