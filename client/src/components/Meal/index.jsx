@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import './style.css'
+import Container from '@material-ui/core/Container';
+
+
 
 export default function Meal({meal}) {
     const [imageUrl, setImageURl] = useState("");
@@ -30,7 +28,9 @@ export default function Meal({meal}) {
     }, [meal.id])
 
     return <article>
-        <h1>{meal.title}</h1>
+        <Container>
+        <div className="meal-card">
+        <h2>{meal.title}</h2>
         <img src= {imageUrl} alt="recipe" />
         {/* <ul>
             <li>Preparation time: {meal.readyInMinutes} minutes.</li>
@@ -38,11 +38,23 @@ export default function Meal({meal}) {
         </ul> */}
 
         {/* <a href={meal.sourceUrl}>Go to Recipe</a> */}
-            <li>Preparation time: {meal.readyInMinutes} minutes.</li>
-            <li>Number of Servings: {meal.servings}</li>
-        <a href={meal.sourceUrl}>Go to Recipe</a>
+            <h1>Preparation time: {meal.readyInMinutes} minutes.</h1>
+            <h1>Number of Servings: {meal.servings}</h1>
 
-        <button
+        <div className='recipe-button'>
+            <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={sendMealData}
+          >
+        <a href={meal.sourceUrl} target="_blank">Go to Recipe</a>
+                  </Button>
+                  </div>
+
+        <div className='favorite-button'>
+        <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -50,7 +62,10 @@ export default function Meal({meal}) {
             onClick={sendMealData}
           >
             Add to Favorites
-          </button>
-
+          </Button>
+          </div>
+     </div>
+     </Container>
     </article>
+    
 }
