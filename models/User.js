@@ -55,18 +55,21 @@ UserSchema.pre("save", function(next) {
         next();
     });
 });
-
-UserSchema.methods.comparePassword = function(password, cb) {
-    bcrypt.compare(password, this.password, (err, isMatch) => {
-        console.log("hashed",this.password,"unhashed",password,"isMatch?",isMatch)
-        if(err)
-            return cb(err);
-        else {
-            return isMatch;
-        }
-        
-    });
-}
+// old comparePassword
+// UserSchema.methods.comparePassword = function(password, cb) {
+//     bcrypt.compare(password, this.password, (err, isMatch) => {
+//         console.log("hashed",this.password,"unhashed",password,"isMatch?",isMatch)
+//         if(err)
+//             return cb(err);
+//         else {
+//             return isMatch;
+//         }
+//     });
+// }
+// kats comparePassword
+UserSchema.methods.comparePassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+  }; 
 
 // app.post("/login", async (request, response) => {
 //     try {
