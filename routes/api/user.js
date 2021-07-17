@@ -110,10 +110,13 @@ router.post('/login', async (req, res) => {
 //     })
 // });
 
-router.put("/api/user/:id", (req, res) => {
+
+
+// Maybe use this route instead /api/user/:id
+router.put("/recipes", (req, res) => {
 
   db.User.update( //find the user where the id is equal to the session id
-      { _id: req.params.id },
+      //{ _id: req.params.id },
       {
           $push: { favorites: req.body } //this pushes to array model db
       },
