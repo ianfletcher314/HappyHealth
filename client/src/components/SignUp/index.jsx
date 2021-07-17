@@ -107,10 +107,10 @@ export default function SignUp() {
             margin="normal"
             required
             fullWidth
-            name="firstName"
-            label="First Name"
-            type="firstName"
-            id="firstName"
+            name="name"
+            label="Name"
+            type="name"
+            id="name"
             autoComplete="current-firstName"
             autoFocus
           />
@@ -119,11 +119,11 @@ export default function SignUp() {
             margin="normal"
             required
             fullWidth
-            name="lastName"
-            label="Last Name"
-            type="lastName"
-            id="lastName"
-            autoComplete="current-lastName"
+            name="userName"
+            label="User Name"
+            type="userName"
+            id="userName"
+            autoComplete="current-userName"
             onChange={handleNameInputChange}
             value={userName}
           />
