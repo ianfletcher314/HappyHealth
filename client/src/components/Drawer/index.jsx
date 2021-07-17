@@ -14,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { withRouter } from "react-router-dom";
+import { withRouter, useLocation, Link } from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
@@ -74,32 +74,32 @@ function ResponsiveDrawer(props) {
     {
       text: "Home",
       icon:<HomeIcon />,
-      onClick: () => history.push('/')
+      onClick: () => history.replace('/')
     },
     {
       text: "Log In",
       icon:<LockOpenIcon />,
-      onClick: () => history.push('/login')
+      onClick: () => history.replace('/login')
     },
     {
       text: "Sign Up",
       icon:<EditIcon />,
-      onClick: () => history.push('/signup')
+      onClick: () => history.replace('/signup')
     },
     {
       text: "Profile",
       icon:<PersonIcon />,
-      onClick: () => history.push('/profile')
+      onClick: () => history.replace('/profile')
     },
     {
       text: "Meal Plan",
       icon:<FormatListNumberedIcon />,
-      onClick: () => history.push('/recipes')
+      onClick: () => history.replace('/recipes')
     },
     {
       text: "Favorites",
       icon:<FastfoodIcon />,
-      onClick: () => history.push('/favorites')
+      onClick: () => history.replace('/favorites')
     }
   ]
 
@@ -111,6 +111,7 @@ function ResponsiveDrawer(props) {
         {itemsList.map((item, index) => {
           const {text,icon,onClick}=item;
           return(
+            // <Link></Link>
           <ListItem button key={text} onClick={onClick}>
             {icon && <ListItemIcon>{icon}</ListItemIcon>}
             <ListItemText primary={text} />

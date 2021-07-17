@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const User = require("../../models/User");
+const db = require("../../models");
+const withAuth = require("../../utils/auth")
 // const session = require('express-session');
 
 
@@ -15,6 +17,19 @@ const userInput = {
 //     console.log(err);
 //   console.log(document);
 // })
+
+router.get('/', withAuth, async (req, res) => {
+  db.User.findById( //find the user where the id is equal to the session id
+    req.session.user_id
+    ).then(dbUser => {
+      const favorites = dbUser.favorites;
+        return res.json({favorites, userName: dbUser.username, myField: "test"});
+    }).catch(err => {
+      console.log('>>', err)
+        res.json(err);
+    });
+
+})
 
 router.post('/', async (req, res) => {
     console.log("the route is working");
@@ -124,8 +139,9 @@ router.post('/login', async (req, res) => {
 // Maybe use this route instead /api/user/:id
 router.put("/recipes", (req, res) => {
 
-  db.User.update( //find the user where the id is equal to the session id
-      //{ _id: req.params.id },
+  console.log(req.body)
+  db.User.findByIdAndUpdate( //find the user where the id is equal to the session id
+      req.session.user_id,
       {
           $push: { favorites: req.body } //this pushes to array model db
       },
