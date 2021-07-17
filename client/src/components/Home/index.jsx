@@ -4,6 +4,11 @@ import './style.css'
 
 
 export default function Home() {
+
+function init (){
+  
+}
+
   return ( 
     <div className="home-body">
     <Container component="main" maxWidth="md">

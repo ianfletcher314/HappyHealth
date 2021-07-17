@@ -13,6 +13,9 @@ export default function Meal({meal}) {
 
     // }
 
+
+    
+
     useEffect(()=>{
         fetch(
             `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=471c7901604e4c7c99fe892a8ad9342b&includeNutrition=false`
@@ -52,6 +55,7 @@ export default function Meal({meal}) {
 
     }
 
+   
     return <article>
         <Container>
         <div className="meal-card">

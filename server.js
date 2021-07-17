@@ -14,22 +14,24 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
 
 const sess = {
-  secret: 'SECRET KEY',
+  secret: 'SECRET KEY2',
   cookie: {},
-    resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/happyhealth', //YOUR MONGODB URL
-        ttl: 14 * 24 * 60 * 60,
-        autoRemove: 'native' 
-    })
+  resave: false,
+  saveUninitialized: true,
+  store: MongoStore.create({
+      mongoUrl: 'mongodb://localhost/happyhealth', //YOUR MONGODB URL
+      ttl: 14 * 24 * 60 * 60,
+       autoRemove: 'native' 
+  })
 };
 
 app.use(session(sess));
+
+// Add routes, both API and view
+app.use(routes);
+
 
 // const userInput = {
 //   username: "spenserlogan",

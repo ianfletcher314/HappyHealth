@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const User = require("../../models/User");
-const session = require('express-session');
+// const session = require('express-session');
 
 
 const userInput = {
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
         //   return ProductTag.bulkCreate(productTagIdArr);
         // }
         // if no product tags, just respond
-        res.status(200).json(user);
+        res.status(200).json({user});
       })
     //   .then((productTagIds) => res.status(200).json(productTagIds))
       .catch((err) => {
@@ -44,16 +44,21 @@ router.post('/', async (req, res) => {
 
 
 router.post('/login', async (req, res) => {
+
+  // req.session.regenerate(function(err){
+  //   console.log('session regenerated!', err)
+  // })
+
   try {
     const userData = await User.findOne({
             username: req.body.username
           });
 
     if (!userData) {
-      res
+      console.log(">>>>user not found")
+      return res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' ,userData });
-      return;
     }
 
     // VALID PASSWORD IS UNDEFINED FOR SOME REASON HOWEVER COMPARE PASSWORD IS WORKING!
@@ -61,20 +66,25 @@ router.post('/login', async (req, res) => {
     console.log("valid pass", validPassword)
 
     if (!validPassword) {
-      res
+      console.log(">>>>>>>>>invalid password")
+      return res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again + valid pass' ,userData, validPassword });
-      return;
     }
-    res.json({ user: userData, message: 'You are now logged in!' });
+    console.log(userData)
+    console.log('before session save:', req.session)
     req.session.save(() => {
-              req.session.user_id = userData.id;
+              req.session.user_id = userData._id;
               req.session.username = userData.username;
               req.session.loggedIn = true;
+              console.log("<<<<<<<<<<<<<>>>>>>>>>", req.session)
+              return res.json({ user: userData, message: 'You are now logged in!' });
             })
+          
+            console.log("<<<<<<<session was saved")
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({status: "failed", msg: err.message, err});
   }
 });
 
