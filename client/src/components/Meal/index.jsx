@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import Button from '@material-ui/core/Button';
 import './style.css'
 import Container from '@material-ui/core/Container';
+
+
 import axios from 'axios'
 
 export default function Meal({meal}) {
@@ -12,9 +14,6 @@ export default function Meal({meal}) {
     //        <a href = {meal.sourceUrl}></a></> 
 
     // }
-
-
-    
 
     useEffect(()=>{
         fetch(
@@ -42,6 +41,7 @@ export default function Meal({meal}) {
               console.error('Error:', error);
             });
 
+
         //FETCH METHOD    
         //     fetch("/recipes", {
         //     method: "PUT",
@@ -57,7 +57,6 @@ export default function Meal({meal}) {
 
     }
 
-   
     return <article>
         <Container>
         <div className="meal-card">
@@ -78,10 +77,10 @@ export default function Meal({meal}) {
             fullWidth
             variant="contained"
             color="primary"
-            //onClick={favoritesData} I DON'T THINK THIS IS SUPPOSED TO BE HERE
+            onClick={favoritesData}
           >
-                <a href={meal.sourceUrl} target="_blank">Go to Recipe</a>
-            </Button>
+        <a href={meal.sourceUrl} target="_blank">Go to Recipe</a>
+                  </Button>
                   </div>
 
         <div className='favorite-button'>

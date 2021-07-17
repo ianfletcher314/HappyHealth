@@ -4,6 +4,8 @@ import MealList from "../MealList";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+//./src/components/Meals/index.jsx AND Cannot find file: 'index.js' does not match the corresponding name on disk: './node_modules/React/react'.
+// Getting the above error when I uncomment the MealList import
 import "./styles.css"
 
 

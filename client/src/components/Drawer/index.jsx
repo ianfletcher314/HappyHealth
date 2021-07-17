@@ -22,7 +22,6 @@ import StoreIcon from '@material-ui/icons/Store';
 import EditIcon from '@material-ui/icons/Edit';
 import PersonIcon from '@material-ui/icons/Person';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
-
 import './style.css'
 
 
@@ -67,14 +66,11 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  let location = useLocation();
-
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
   const {history}=props;
-  let itemsList = [
+  const itemsList = [
     {
       text: "Home",
       icon:<HomeIcon />,
@@ -106,10 +102,6 @@ function ResponsiveDrawer(props) {
       onClick: () => history.replace('/favorites')
     }
   ]
-
-  if(location.pathname === "/login"){
-    return null;
-  }
 
   const drawer = (
     <div>
