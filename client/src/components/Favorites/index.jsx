@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,16 +38,24 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Profile() {
+  const history = useHistory();
   const classes = useStyles();
   
   const [favoritesData, setFavoritesData] = useState(null)
   
   useEffect(() => {
 
-    axios.get('/api/user/:id')
+    axios.get('/api/user')
     .then((response) => {
-      const data = response.data;
+      // const data = response.data;
+      console.log(response)
 
+    })
+    .catch(err => {
+      if( err.message === "Request failed with status code 403"){
+        history.replace("/login");
+      }
+      console.log('>>>> err', JSON.stringify(err, null, 2))
     })
 
   }, [])

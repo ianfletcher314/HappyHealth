@@ -30,26 +30,28 @@ export default function Meal({meal}) {
     }, [meal.id])
 
 
-    function favoritesData(event) {
-        event.preventDefault()
-        const data = { title: meal.title, url: meal.sourceUrl, id: meal.id}
-        //console.log('Success:', data)
-        // axios.put('/recipes', data) // maybe use api/user/:id instead
-        //     .then(data => {
-        //       console.log('Success:', data);
-        //     })
-        //     .catch((error) => {
-        //       console.error('Error:', error);
-        //     });
-            fetch("/recipes", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-          });
-          
-          console.log(JSON.stringify(data))
+    function favoritesData(data) {
+        //event.preventDefault()
+        const favMeal = { title: meal.title, url: meal.sourceUrl, id: meal.id}
+        //console.log('Success:', favMeal)
+        axios.put('/api/user/recipes', favMeal) // maybe use api/user/:id instead
+            .then(data => {
+              console.log('Success:', data);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
 
-        //   const json = res.json();
+        //FETCH METHOD    
+        //     fetch("/recipes", {
+        //     method: "PUT",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(data)
+        //   });
+          
+        //   console.log(JSON.stringify(data))
+
+        //   const json = data.json();
       
         //   return json;
 
