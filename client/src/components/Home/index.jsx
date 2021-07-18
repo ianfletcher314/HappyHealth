@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import './style.css'
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return ( 
@@ -41,7 +42,7 @@ export default function Home() {
             variant="contained"
             color="primary"
           >
-            Create an account
+            <Link to="/signup">Create an account</Link>
           </Button>
       </div>
       </div>
