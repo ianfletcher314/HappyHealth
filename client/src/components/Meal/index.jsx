@@ -84,7 +84,7 @@ export default function Meal({meal}) {
             fullWidth
             variant="contained"
             color="primary"
-            onClick={favoritesData}
+            // onClick={favoritesData}
           >
               <FormatListBulletedIcon/>
         <a href={meal.sourceUrl} target="_blank">Go to Recipe</a>
@@ -98,7 +98,7 @@ export default function Meal({meal}) {
             variant="contained"
             color="primary"
             onClick={favoritesData}
-            onClick={() => setClicked(true)}
+            // onClick={() => setClicked(true)}
           >
       {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             Add to Favorites
