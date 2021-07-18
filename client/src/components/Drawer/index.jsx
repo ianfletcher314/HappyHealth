@@ -87,11 +87,6 @@ function ResponsiveDrawer(props) {
       onClick: () => history.replace('/signup')
     },
     {
-      text: "Profile",
-      icon:<PersonIcon />,
-      onClick: () => history.replace('/profile')
-    },
-    {
       text: "Meal Plan",
       icon:<FormatListNumberedIcon />,
       onClick: () => history.replace('/recipes')
@@ -100,6 +95,11 @@ function ResponsiveDrawer(props) {
       text: "Favorites",
       icon:<FastfoodIcon />,
       onClick: () => history.replace('/favorites')
+    },
+    {
+      text: "Log Out",
+      icon:<EditIcon />,
+      onClick: () => history.replace('/')
     }
   ]
 
@@ -141,7 +141,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Happy Health
+            HappyHealth
           </Typography>
         </Toolbar>
       </AppBar>

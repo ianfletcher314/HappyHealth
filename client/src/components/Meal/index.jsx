@@ -2,12 +2,18 @@ import React, {useState, useEffect} from "react";
 import Button from '@material-ui/core/Button';
 import './style.css'
 import Container from '@material-ui/core/Container';
-
-
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import axios from 'axios'
+import IconButton from "@material-ui/core/IconButton";
+import AddCircleIcon from "@material-ui/icons/AddCircleOutline";
+import BlockIcon from "@material-ui/icons/BlockOutlined";
+import { Link } from "react-router-dom";
 
 export default function Meal({meal}) {
     const [imageUrl, setImageURl] = useState("");
+    const [clicked, setClicked] = useState();
     
     // function sendMealData(props) {
     // return <><h1>{meal.title}</h1>
@@ -57,6 +63,7 @@ export default function Meal({meal}) {
 
     }
 
+
     return <article>
         <Container>
         <div className="meal-card">
@@ -79,18 +86,21 @@ export default function Meal({meal}) {
             color="primary"
             onClick={favoritesData}
           >
+              <FormatListBulletedIcon/>
         <a href={meal.sourceUrl} target="_blank">Go to Recipe</a>
                   </Button>
                   </div>
 
         <div className='favorite-button'>
-        <Button
+        <Button 
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             onClick={favoritesData}
+            onClick={() => setClicked(true)}
           >
+      {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             Add to Favorites
           </Button>
           </div>

@@ -12,9 +12,9 @@ const nutrients = mealData.nutrients;
                 <Container component="main" maxWidth="md"></Container>
             <h2 className="macros-heading">Nutrients</h2>
                 <li>Calories: {nutrients.calories.toFixed(0)}</li>
-                <li>Carbohydrates: {nutrients.carbohydrates.toFixed(0)}</li>
-                <li>Fat:{nutrients.fat.toFixed(0)}</li>
-                <li>Protein {nutrients.protein.toFixed(0)}</li>
+                <li>Carbohydrates: {nutrients.carbohydrates.toFixed(0)} grams</li>
+                <li>Fat: {nutrients.fat.toFixed(0)} grams</li>
+                <li>Protein {nutrients.protein.toFixed(0)} grams</li>
         </section>
         <section className="meals">
             {mealData.meals.map((meal)=>{
