@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
+import FavoritesUI from "../FavoritesUI"
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -43,13 +44,21 @@ export default function Profile() {
   
   const [favoritesData, setFavoritesData] = useState(null)
   
+
+  
   useEffect(() => {
+    getFavoritesData();
+  }, []);
+
+
+  const getFavoritesData = () => {
 
     axios.get('/api/user')
     .then((response) => {
-      // const data = response.data;
-      console.log(response)
-
+      // console.log(response)
+      console.log(response.data.favorites)
+      const favoritesObj = response.data.favorites;
+      setFavoritesData(favoritesObj);
     })
     .catch(err => {
       if( err.message === "Request failed with status code 403"){
@@ -58,19 +67,14 @@ export default function Profile() {
       console.log('>>>> err', JSON.stringify(err, null, 2))
     })
 
-  }, [])
+  }
 
   
   return (
     <Container component="main" maxWidth="xs">
-<Typography>
-  Favorites! 
-</Typography>
-{/* <card className="favorites">
-    {favoritesData.data.map((info)=>{
-        return <Data key={info.id} info={info} />;
-    })}
-</card> */}
+<div>
+    <FavoritesUI favoritesData={favoritesData}/>
+</div>
     </Container>
   );
 
