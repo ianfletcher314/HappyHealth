@@ -10,7 +10,7 @@ export default function FavoritesUI(props) {
         const {favoritesData} = props;
         console.log(favoritesData)
 
-    //     if (favoritesData.length > 0) {
+        if (favoritesData?.length > 0) {
             return(
                 favoritesData.map((faves, index) => {
                     console.log(faves);
@@ -22,9 +22,9 @@ export default function FavoritesUI(props) {
                     )
                 })
             )
-    //     } else {
-    //         return (<h3>No favorites saved yet!</h3>)
-    //     }
+        } else {
+            return (<h3>No favorites saved yet!</h3>)
+        }
     }
     
     return(
