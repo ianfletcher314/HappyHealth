@@ -13,7 +13,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import './style.css';
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const history = useHistory();
 
   const [userEmail, setUserEmail] = useState("")
   const [userPassword, setUserPassword] = useState("")
@@ -68,6 +71,7 @@ export default function SignUp() {
         axios.post('/api/user', data )
             .then(data => {
               console.log('Success:', data);
+              history.push("/login");
             })
             .catch((error) => {
               console.error('Error:', error);
@@ -146,7 +150,7 @@ export default function SignUp() {
             className={classes.submit}
             onClick={createUserRequest}
           >
-            <Link to="/login">Sign Up</Link>
+          Sign Up
           </Button>
         </form>
       </div>

@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import './style.css';
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,6 +42,7 @@ export default function SignIn() {
 
   const [userPassword, setUserPassword] = useState("")
   const [userName, setUserName] = useState("")
+  const history = useHistory();
   
 
     function handleNameInputChange(event) {
@@ -61,6 +63,7 @@ export default function SignIn() {
         axios.post('/api/user/login', data )
             .then(data => {
               console.log('Success:', data);
+              history.push("/");
             })
             .catch((error) => {
               console.error('Error:', error);
@@ -113,7 +116,7 @@ export default function SignIn() {
             className={classes.submit}
             onClick={loginRequest}
           >
-            <Link to="/">Sign In</Link>
+          Sign In
           </Button>
           <Grid container>
             <Grid item xs>
