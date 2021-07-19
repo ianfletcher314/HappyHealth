@@ -75,6 +75,7 @@ export default function SignUp() {
             })
             .catch((error) => {
               console.error('Error:', error);
+              window.alert("Fill all fields");
             });
     }
 

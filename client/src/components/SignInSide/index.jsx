@@ -67,6 +67,7 @@ export default function SignIn() {
             })
             .catch((error) => {
               console.error('Error:', error);
+              window.alert("Wrong login information");
             });
     }
 
