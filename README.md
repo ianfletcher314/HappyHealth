@@ -32,6 +32,5 @@ If you have any questions or problems... Please feel free to contact us:
 
 E-mail: Florez.Photo@Gmail.com, Krather7@gmail.com, SpenserLogan@Gmail.com, Samuel6Roth@Gmail.com, ianfletcher314@gmail.com           
 
-Github: [Kyle Florez](https://github.com/SLUDGE-GIT)  [Kyle Rather](https://github.com/krather7)  [Spenser Logan](https://github.com/spenserlogan)  
-[Samuel Roth](https://github.com/samuel6roth) [IanFletcher](https://github.com/ianfletcher314)
+Github: [Kyle Florez](https://github.com/SLUDGE-GIT)  [Kyle Rather](https://github.com/krather7)  [Spenser Logan](https://github.com/spenserlogan)  [Samuel Roth](https://github.com/samuel6roth) [IanFletcher](https://github.com/ianfletcher314)
 
