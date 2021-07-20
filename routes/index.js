@@ -9,11 +9,10 @@ router.route("/test")
   })
 router.use("/api", apiRoutes);
 
-router.use(function(req, res) {
-  // console.log("routes is working")
-    res.sendFile(path.join(__dirname, "../client/public/index.html"));
-  
-  });
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
 
 
 
