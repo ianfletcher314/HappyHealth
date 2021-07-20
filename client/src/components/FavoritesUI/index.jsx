@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import './style.css'
 
 
 export default function FavoritesUI(props) {
@@ -13,19 +15,31 @@ export default function FavoritesUI(props) {
         if (favoritesData?.length > 0) {
             return(
                 favoritesData.map((faves, index) => {
-                    console.log("<<<<<<<<<<<<<<", faves);
-                    console.log("<<<<<<<<<<<<<<", faves.image);
                     return(
-                        <div className="enterLater" key={faves._id}>
+                    <div className="home-body">
+                        <div key={faves._id} className="meal-card">
+                            <h2 className="meals">{faves.title}</h2>
                             <img src={faves.image} alt="Logo" />
-                            <p className="enterLater">{faves.title}</p>
-                            <p className="enterLater">{faves.url}</p>
+                                <div className="recipeButton">
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                              >
+                                 <a href={faves.url} target="_blank">Go to Recipe</a>
+                            </Button>
+                            </div>
+                        </div>
                         </div>
                     )
                 })
             )
         } else {
-            return (<h3>No favorites saved yet!</h3>)
+            return (
+                
+            <h3 className="home-body">No favorites saved yet!</h3>
+            )
         }
     }
     

@@ -20,9 +20,7 @@ const nutrients = mealData.nutrients;
             {mealData.meals.map((meal)=>{
                 return <Meal key={meal.id} meal={meal} />;
             })}
-
         </section>
-
     </main>
     
 }

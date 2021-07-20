@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
 import FavoritesUI from "../FavoritesUI"
+import './style.css'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -71,11 +72,9 @@ export default function Profile() {
 
   
   return (
-    <Container component="main" maxWidth="xs">
-<div>
+    <div className="meals">
     <FavoritesUI favoritesData={favoritesData}/>
-</div>
-    </Container>
+    </div>
   );
 
   
