@@ -19,7 +19,6 @@ We created an application that allows you to select recipes based on the number 
 * [Usage](#Usage)
 * [License](#License)
 * [Contributing](#Contributions-/-Contributors)
-* [Test](#Test)
 * [Questions](#Questions)
  
 # Installation
