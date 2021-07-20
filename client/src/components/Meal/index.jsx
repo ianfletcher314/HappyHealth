@@ -37,7 +37,7 @@ export default function Meal({meal}) {
 
     function favoritesData(data) {
         //event.preventDefault()
-        const favMeal = { title: meal.title, url: meal.sourceUrl, id: meal.id}
+        const favMeal = { title: meal.title, url: meal.sourceUrl, id: meal.id, image: imageUrl}
         //console.log('Success:', favMeal)
         axios.put('/api/user/recipes', favMeal) // maybe use api/user/:id instead
             .then(data => {
