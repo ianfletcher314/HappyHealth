@@ -25,16 +25,6 @@ export default function Home() {
     </div>
 
   <div className="button-family">
-    <div className='meal-button'>
-        <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-          >
-            Generate Meal Plan
-          </Button>
-      </div>
       <div className='signup-button'>
         <Button
             type="submit"

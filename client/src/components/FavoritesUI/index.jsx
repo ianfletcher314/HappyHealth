@@ -20,7 +20,7 @@ export default function FavoritesUI(props) {
                         <div key={faves._id} className="meal-card">
                             <h2 className="meals">{faves.title}</h2>
                             <img src={faves.image} alt="Logo" />
-                                <div className="recipeButton">
+                                <div className="recipe-button">
                             <Button
                                 type="submit"
                                 fullWidth
