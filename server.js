@@ -1,3 +1,4 @@
+// require ("dotenv").config()
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -16,12 +17,12 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const sess = {
-  secret: 'SECRET KEY2',
+  secret: process.env.SECRET||"secret",
   cookie: {},
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost/happyhealth', //YOUR MONGODB URL
+      mongoUrl: process.env.MONGODB_URI||'mongodb://localhost/happyhealth', //YOUR MONGODB URL
       ttl: 14 * 24 * 60 * 60,
        autoRemove: 'native' 
   })
@@ -59,7 +60,7 @@ app.use(routes);
 
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb+srv://happyhealth:password12345@cluster0.iidhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  process.env.MONGODB_URI || 'mongodb://localhost/happyhealth',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

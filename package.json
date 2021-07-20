@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "cd server && npm start",
+    "heroku-postbuild": "cd client && npm run build",
+    "start": "node server.js",
+    "start:prod": "npm start",
     "start:dev": "concurrently \"npm run watch\" \"cd client && npm start\"",
     "watch": "nodemon server.js",
-    "install": "npm i && cd client && npm i",
+    "install": "cd client && npm i",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node scripts/seedDB.js"
   },
@@ -28,6 +29,7 @@
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.4.1",
     "connect-mongostore": "^0.1.4",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "if-env": "^1.0.4",
