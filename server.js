@@ -47,15 +47,26 @@ app.use(routes);
   
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+// mongoose.connect(
+//     process.env.MONGODB_URI || "mongodb://localhost/happyhealth",
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//       useCreateIndex: true,
+//       useFindAndModify: false
+//     }
+//   );
+
+
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/happyhealth",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    }
-  );
+  process.env.MONGODB_URI || "mongodb+srv://happyhealth:password12345@cluster0.iidhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
   
 // Start the API server
