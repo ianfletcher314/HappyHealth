@@ -42,6 +42,7 @@ export default function Meal({meal}) {
         axios.put('/api/user/recipes', favMeal) // maybe use api/user/:id instead
             .then(data => {
               console.log('Success:', data);
+              setClicked(true)
             })
             .catch((error) => {
               console.error('Error:', error);
@@ -98,7 +99,6 @@ export default function Meal({meal}) {
             variant="contained"
             color="primary"
             onClick={favoritesData}
-            // onClick={() => setClicked(true)}
           >
       {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             Add to Favorites
