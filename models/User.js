@@ -39,6 +39,10 @@ const UserSchema = new Schema({
         id : {
             type: String,
             trim: true,
+        },
+        image : {
+            type: String,
+            trim: true,
         }
     }
     ]

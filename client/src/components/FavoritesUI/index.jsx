@@ -13,9 +13,11 @@ export default function FavoritesUI(props) {
         if (favoritesData?.length > 0) {
             return(
                 favoritesData.map((faves, index) => {
-                    console.log(faves);
+                    console.log("<<<<<<<<<<<<<<", faves);
+                    console.log("<<<<<<<<<<<<<<", faves.image);
                     return(
                         <div className="enterLater" key={faves._id}>
+                            <img src={faves.image} alt="Logo" />
                             <p className="enterLater">{faves.title}</p>
                             <p className="enterLater">{faves.url}</p>
                         </div>
