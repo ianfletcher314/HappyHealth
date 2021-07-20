@@ -64,6 +64,7 @@ export default function SignIn() {
             .then(data => {
               console.log('Success:', data);
               history.push("/");
+              
             })
             .catch((error) => {
               console.error('Error:', error);
