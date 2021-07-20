@@ -77,19 +77,14 @@ function ResponsiveDrawer(props) {
       onClick: () => history.replace('/')
     },
     {
-      text: "Meal Plan",
-      icon:<FormatListNumberedIcon />,
-      onClick: () => history.replace('/recipes')
+      text: "Log In",
+      icon:<LockOpenIcon />,
+      onClick: () => history.replace('/login')
     },
     {
-      text: "Favorites",
-      icon:<FastfoodIcon />,
-      onClick: () => history.replace('/favorites')
-    },
-    {
-      text: "Log Out",
+      text: "Sign Up",
       icon:<EditIcon />,
-      onClick: () => history.replace('/')
+      onClick: () => history.replace('/signup')
     }
   ]
 

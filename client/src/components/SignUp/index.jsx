@@ -13,8 +13,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import './style.css';
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,16 +36,23 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+// create states where the user's information can be saved. this info will be retrieved by the onclick function
 
-export default function SignIn() {
+
+export default function SignUp() {
   const classes = useStyles();
+  const history = useHistory();
 
-
+  const [userEmail, setUserEmail] = useState("")
   const [userPassword, setUserPassword] = useState("")
   const [userName, setUserName] = useState("")
-  const history = useHistory();
   
-
+    function handleEmailInputChange(event) {
+      const value = event.target.value;
+      console.log(value)
+      setUserEmail(value)
+      
+    }
     function handleNameInputChange(event) {
       const value = event.target.value;
       console.log(value)
@@ -57,18 +65,17 @@ export default function SignIn() {
       setUserPassword(value)
       
     }
-    function loginRequest(event) {
+    function createUserRequest(event) {
         event.preventDefault()
-        const data = { username: userName, password: userPassword}
-        axios.post('/api/user/login', data )
+        const data = { username: userName, email: userEmail, password: userPassword}
+        axios.post('/api/user', data )
             .then(data => {
               console.log('Success:', data);
-              history.push("/");
-              
+              history.push("/login");
             })
             .catch((error) => {
               console.error('Error:', error);
-              window.alert("Wrong login information");
+              window.alert("Fill all fields");
             });
     }
 
@@ -81,21 +88,46 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Log In
+          Sign Up
         </Typography>
         <form className={classes.form} noValidate>
+        <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="name"
+            label="Name"
+            type="name"
+            id="name"
+            autoComplete="current-firstName"
+            autoFocus
+          />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="username"
-            label="Username"
-            name="username"
-            autoComplete="username"
-            autoFocus
+            name="userName"
+            label="User Name"
+            type="userName"
+            id="userName"
+            autoComplete="current-userName"
             onChange={handleNameInputChange}
             value={userName}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            // this is the onClick functinality
+            onChange={handleEmailInputChange}
+            value={userEmail}
           />
           <TextField
             variant="outlined"
@@ -107,6 +139,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            // this is the onClick functinality
             onChange={handlePasswordInputChange}
             value={userPassword}
           />
@@ -116,19 +149,10 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={loginRequest}
+            onClick={createUserRequest}
           >
-          Sign In
+          Sign Up
           </Button>
-          <Grid container>
-            <Grid item xs>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
     </Container>

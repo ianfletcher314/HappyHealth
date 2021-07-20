@@ -11,7 +11,7 @@ router.use("/api", apiRoutes);
 
 router.use(function(req, res) {
   // console.log("routes is working")
-    res.sendFile(path.join(__dirname, "../../public/index.html"));
+    res.sendFile(path.join(__dirname, "../client/public/index.html"));
   
   });
 
