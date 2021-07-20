@@ -6,6 +6,9 @@
 
 # Description
 
+Happy Health was created with the idea that eating healthy and changing the way you eat does not always have to be boring and flavorless.
+We created an application that allows you to select recipes based on the number of calories you want to consume per day.
+
 # Deployed
    Live Site: [Link to Our Deployed Version](https://immense-harbor-21762.herokuapp.com/) 
 
