@@ -1,0 +1,8 @@
+.home-body{
+    margin-left:200px;
+  }
+  @media only screen and (max-width: 600px) {
+    .home-body {
+      margin-left:auto;
+    }
+  }
