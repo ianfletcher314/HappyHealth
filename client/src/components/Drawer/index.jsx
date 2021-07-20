@@ -99,7 +99,7 @@ function ResponsiveDrawer(props) {
     {
       text: "Log Out",
       icon:<EditIcon />,
-      onClick: () => history.replace('/')
+      onClick: () => history.replace('/logout')
     }
   ]
 

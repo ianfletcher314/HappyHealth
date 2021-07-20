@@ -137,7 +137,7 @@ router.post('/login', async (req, res) => {
 
 
 // Maybe use this route instead /api/user/:id
-router.put("/recipes", (req, res) => {
+router.put("/recipes", withAuth, (req, res) => {
 
   console.log(req.body)
   db.User.findByIdAndUpdate( //find the user where the id is equal to the session id
@@ -154,9 +154,20 @@ router.put("/recipes", (req, res) => {
 });
 
 
-
-
-
+router.get('/logout', function(req, res, next) {
+  // remove the req.user property and clear the login session
+  console.log("<<<<<<<Did we make it this far>>>>>>>>>>>>>", req)
+  // req.logout();
+  if (req.session.loggedIn) {
+    req.session.destroy();
+  // destroy session data
+  // req.session = null;
+  // redirect to homepage
+  res.json({message: 'You are successfully logged out!'});
+  }else {
+    res.json({message: "You were never logged in!"})
+  }
+});
 
 
 module.exports = router;
