@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useContext} from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,15 +13,19 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { UserContext } from '../../App';
+import './style.css'
 
 export default function Logout() {
 
     const history = useHistory();
+    const { user, setUser} = useContext(UserContext);
 
     function userLogout(event) {
         event.preventDefault()
         axios.get('/api/user/logout')
             .then(data => {
+              setUser({...user, loggedIn: false})
               console.log('Success:', data);
               history.replace("/");
 
@@ -33,7 +37,7 @@ export default function Logout() {
 
     return (
         <form className="notsure">
-
+<div className="button">
           <Button
             type="submit"
             fullWidth
@@ -43,6 +47,7 @@ export default function Logout() {
           >
           Logout
           </Button>
+          </div>
         </form>
     )
 }

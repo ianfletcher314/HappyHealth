@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +15,7 @@ import axios from 'axios';
 import './style.css';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { UserContext } from '../../App';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const { user, setUser} = useContext(UserContext);
 
 
   const [userPassword, setUserPassword] = useState("")
@@ -62,9 +64,9 @@ export default function SignIn() {
         const data = { username: userName, password: userPassword}
         axios.post('/api/user/login', data )
             .then(data => {
+              setUser({...user, loggedIn: true})
               console.log('Success:', data);
-              history.push("/");
-              
+              history.push("/")
             })
             .catch((error) => {
               console.error('Error:', error);
