@@ -2,8 +2,10 @@
 
   ![badge](https://img.shields.io/badge/License-MIT-Green)
 
+![hh_home](https://user-images.githubusercontent.com/67348654/126404844-910f1294-01b4-4528-8db7-e043bb54a55e.jpg)
+
 # Description
-The Happy Health App is designed to help a user plan their meals based on a daily caloric limit
+
 
 # Table of Contents
 
@@ -15,11 +17,11 @@ The Happy Health App is designed to help a user plan their meals based on a dail
 * [Questions](#Questions)
  
 # Installation
-The technologies used for this project include React, Node, Materialize, MongoDB. To run locally - first fork the project then run "npm start"
+
 
 
 # Usuage
-
+The technologies used for this project include React, Node, Materialize, MongoDB, Bcrypt. To run locally - first fork the project then run "npm start"
 
 # License
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and / or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
