@@ -27,7 +27,7 @@ To run locally - first fork the project then run "npm i".
 Lastly - Run "npm start" to view the site locally.
 
 
-# Usuage
+# Usage
 The technologies used for this project include React, Node, Materialize, MongoDB, Bcrypt, [Spoonacular API](https://spoonacular.com/food-api). 
 
 # License
