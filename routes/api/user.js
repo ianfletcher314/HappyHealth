@@ -25,15 +25,15 @@ router.get('/', withAuth, async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    console.log("the route is working");
-    console.log(req.body)
+    console.log("creating user");
+    // console.log(req.body)
     User.create(req.body)
       .then((user) => {
-        console.log(user)
+        // console.log(user)
         res.status(200).json({user});
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         res.status(400).json(err);
     });
 });
