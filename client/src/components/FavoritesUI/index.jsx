@@ -4,9 +4,6 @@ import './style.css'
 
 
 export default function FavoritesUI(props) {
-    //console.log(props.favoritesData)
-    // const {favoritesData} = props;
-    // console.log(favoritesData)
     
     const displayFavorites = (props) => {
         const {favoritesData} = props;

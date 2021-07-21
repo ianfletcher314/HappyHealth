@@ -36,9 +36,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+
+
 // create states where the user's information can be saved. this info will be retrieved by the onclick function
-
-
 export default function SignUp() {
   const classes = useStyles();
   const history = useHistory();
@@ -49,19 +50,19 @@ export default function SignUp() {
   
     function handleEmailInputChange(event) {
       const value = event.target.value;
-      console.log(value)
+      // console.log(value)
       setUserEmail(value)
       
     }
     function handleNameInputChange(event) {
       const value = event.target.value;
-      console.log(value)
+      // console.log(value)
       setUserName(value)
       
     }
     function handlePasswordInputChange(event) {
       const value = event.target.value;
-      console.log(value)
+      // console.log(value)
       setUserPassword(value)
       
     }
@@ -70,7 +71,7 @@ export default function SignUp() {
         const data = { username: userName, email: userEmail, password: userPassword}
         axios.post('/api/user', data )
             .then(data => {
-              console.log('Success:', data);
+              console.log('Success:');
               history.push("/login");
             })
             .catch((error) => {

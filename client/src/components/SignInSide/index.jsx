@@ -49,13 +49,13 @@ export default function SignIn() {
 
     function handleNameInputChange(event) {
       const value = event.target.value;
-      console.log(value)
+      // console.log(value)
       setUserName(value)
       
     }
     function handlePasswordInputChange(event) {
       const value = event.target.value;
-      console.log(value)
+      // console.log(value)
       setUserPassword(value)
       
     }
@@ -65,7 +65,7 @@ export default function SignIn() {
         axios.post('/api/user/login', data )
             .then(data => {
               setUser({...user, loggedIn: true})
-              console.log('Success:', data);
+              console.log('Success:');
               history.push("/")
             })
             .catch((error) => {

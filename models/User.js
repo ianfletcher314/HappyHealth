@@ -59,36 +59,11 @@ UserSchema.pre("save", function(next) {
         next();
     });
 });
-// old comparePassword
-// UserSchema.methods.comparePassword = function(password, cb) {
-//     bcrypt.compare(password, this.password, (err, isMatch) => {
-//         console.log("hashed",this.password,"unhashed",password,"isMatch?",isMatch)
-//         if(err)
-//             return cb(err);
-//         else {
-//             return isMatch;
-//         }
-//     });
-// }
-// kats comparePassword
+
 UserSchema.methods.comparePassword = async function (password) {
     return bcrypt.compare(password, this.password);
   }; 
 
-// app.post("/login", async (request, response) => {
-//     try {
-//         var user = await User.findOne({ username: request.body.username }).exec();
-//         if(!user) {
-//             return response.status(400).send({ message: "The username does not exist" });
-//         }
-//         if(!Bcrypt.compareSync(request.body.password, user.password)) {
-//             return response.status(400).send({ message: "The password is invalid" });
-//         }
-//         response.send({ message: "The username and password combination is correct!" });
-//     } catch (error) {
-//         response.status(500).send(error);
-//     }
-// });
 
 const User = mongoose.model("User", UserSchema);
 

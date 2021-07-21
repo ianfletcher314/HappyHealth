@@ -1,11 +1,9 @@
-// require ("dotenv").config()
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
-// const User = require("./models/User");
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
@@ -15,7 +13,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-
+// create session that stores login data in connect-mongo
 const sess = {
   secret: process.env.SECRET||"secret",
   cookie: {},
@@ -34,31 +32,6 @@ app.use(session(sess));
 app.use(routes);
 
 
-// const userInput = {
-//   username: "spenserlogan",
-//   password: "password12345"
-// }
-
-// const user = new User(userInput);
-// user.save((err, document) => {
-//   if(err)
-//     console.log(err);
-//   console.log(document);
-// })
-  
-// Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
-// mongoose.connect(
-//     process.env.MONGODB_URI || "mongodb://localhost/happyhealth",
-//     {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//       useCreateIndex: true,
-//       useFindAndModify: false
-//     }
-//   );
-
-
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost/happyhealth',
   {
@@ -74,5 +47,3 @@ mongoose.connect(
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
-
-// mongodb+srv://Health-admin:StayHealthy123@cluster0.iidhp.mongodb.net/happyhealth?retryWrites=true&w=majority

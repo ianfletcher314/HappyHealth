@@ -26,7 +26,7 @@ export default function Logout() {
         axios.get('/api/user/logout')
             .then(data => {
               setUser({...user, loggedIn: false})
-              console.log('Success:', data);
+              console.log('Success:');
               history.replace("/");
 
             })

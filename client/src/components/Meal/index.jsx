@@ -15,11 +15,6 @@ export default function Meal({meal}) {
     const [imageUrl, setImageURl] = useState("");
     const [clicked, setClicked] = useState();
     
-    // function sendMealData(props) {
-    // return <><h1>{meal.title}</h1>
-    //        <a href = {meal.sourceUrl}></a></> 
-
-    // }
 
     useEffect(()=>{
         fetch(
@@ -36,9 +31,7 @@ export default function Meal({meal}) {
 
 
     function favoritesData(data) {
-        //event.preventDefault()
         const favMeal = { title: meal.title, url: meal.sourceUrl, id: meal.id, image: imageUrl}
-        //console.log('Success:', favMeal)
         axios.put('/api/user/recipes', favMeal) // maybe use api/user/:id instead
             .then(data => {
               console.log('Success:', data);
@@ -49,19 +42,6 @@ export default function Meal({meal}) {
             });
 
 
-        //FETCH METHOD    
-        //     fetch("/recipes", {
-        //     method: "PUT",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify(data)
-        //   });
-          
-        //   console.log(JSON.stringify(data))
-
-        //   const json = data.json();
-      
-        //   return json;
-
     }
 
 
@@ -70,12 +50,6 @@ export default function Meal({meal}) {
         <div className="meal-card">
         <h2>{meal.title}</h2>
         <img src= {imageUrl} alt="recipe" />
-        {/* <ul>
-            <li>Preparation time: {meal.readyInMinutes} minutes.</li>
-            <li>Number of Servings: {meal.servings}</li>
-        </ul> */}
-
-        {/* <a href={meal.sourceUrl}>Go to Recipe</a> */}
             <h1>Preparation time: {meal.readyInMinutes} minutes.</h1>
             <h1>Number of Servings: {meal.servings}</h1>
 
@@ -85,7 +59,6 @@ export default function Meal({meal}) {
             fullWidth
             variant="contained"
             color="primary"
-            // onClick={favoritesData}
           >
               <FormatListBulletedIcon/>
         <a href={meal.sourceUrl} target="_blank">Go to Recipe</a>

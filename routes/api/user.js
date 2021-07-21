@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../../models/User");
 const db = require("../../models");
 const withAuth = require("../../utils/auth")
-// const session = require('express-session');
+
 
 
 const userInput = {
@@ -10,13 +10,6 @@ const userInput = {
       password: "password12345"
 }
 
-// const user = new User(userInput);
-
-// user.save((err, document) => {
-//   if(err)
-//     console.log(err);
-//   console.log(document);
-// })
 
 router.get('/', withAuth, async (req, res) => {
   db.User.findById( //find the user where the id is equal to the session id
@@ -32,25 +25,13 @@ router.get('/', withAuth, async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    console.log("the route is working");
-    console.log(req.body)
+    // console.log("the route is working");
+    // console.log(req.body)
     User.create(req.body)
       .then((user) => {
-        console.log(user)
-        // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-        // if (req.body.tagIds.length) {
-        //   const productTagIdArr = req.body.tagIds.map((tag_id) => {
-        //     return {
-        //       product_id: product.id,
-        //       tag_id,
-        //     };
-        //   });
-        //   return ProductTag.bulkCreate(productTagIdArr);
-        // }
-        // if no product tags, just respond
+        // console.log(user)
         res.status(200).json({user});
       })
-    //   .then((productTagIds) => res.status(200).json(productTagIds))
       .catch((err) => {
         console.log(err);
         res.status(400).json(err);
@@ -60,9 +41,6 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
 
-  // req.session.regenerate(function(err){
-  //   console.log('session regenerated!', err)
-  // })
 
   try {
     const userData = await User.findOne({
@@ -78,7 +56,7 @@ router.post('/login', async (req, res) => {
 
     // VALID PASSWORD IS UNDEFINED FOR SOME REASON HOWEVER COMPARE PASSWORD IS WORKING!
     const validPassword = await userData.comparePassword(req.body.password);
-    console.log("valid pass", validPassword)
+    // console.log("valid pass", validPassword)
 
     if (!validPassword) {
       console.log(">>>>>>>>>invalid password")
@@ -86,13 +64,13 @@ router.post('/login', async (req, res) => {
         .status(400)
         .json({ message: 'Incorrect email or password, please try again + valid pass' ,userData, validPassword });
     }
-    console.log(userData)
-    console.log('before session save:', req.session)
+    // console.log(userData)
+    // console.log('before session save:', req.session)
     req.session.save(() => {
               req.session.user_id = userData._id;
               req.session.username = userData.username;
               req.session.loggedIn = true;
-              console.log("<<<<<<<<<<<<<>>>>>>>>>", req.session)
+              // console.log("<<<<<<<<<<<<<>>>>>>>>>", req.session)
               return res.json({ user: userData, message: 'You are now logged in!' });
             })
           
@@ -103,43 +81,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// old route
-// router.post('/login', async(req, res) => {
-//   User.findOne({
-//       username: req.body.username
-//     }
-// )
-//     .then(dbUserData => {
-//       console.log(req.body,"request",dbUserData)
-//       if(!dbUserData) {
-//         res.status(400).json({message: "No user with that username!" });
-//         return;
-//       }
-//       const validPassword =dbUserData.comparePassword(req.body.password);
-//       if (!validPassword) {
-//         console.log(req.body,"request and valid pass",validPassword,)
-//         res.status(400).json({message: "Incorrect password!" });
-//         return;
-//       }
-//       req.session.save(() => {
-//         req.session.user_id = dbUserData.id;
-//         req.session.username = dbUserData.username;
-//         req.session.loggedIn = true;
-//         res.json({user: dbUserData, message: "You are now logged in!" });
-//       })
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     })
-// });
-
 
 
 // Maybe use this route instead /api/user/:id
 router.put("/recipes", withAuth, (req, res) => {
 
-  console.log(req.body)
+  // console.log(req.body)
   db.User.findByIdAndUpdate( //find the user where the id is equal to the session id
       req.session.user_id,
       {
@@ -156,13 +103,9 @@ router.put("/recipes", withAuth, (req, res) => {
 
 router.get('/logout', function(req, res, next) {
   // remove the req.user property and clear the login session
-  console.log("<<<<<<<Did we make it this far>>>>>>>>>>>>>", req)
-  // req.logout();
+  // console.log("<<<<<<<Did we make it this far>>>>>>>>>>>>>", req)
   if (req.session.loggedIn) {
     req.session.destroy();
-  // destroy session data
-  // req.session = null;
-  // redirect to homepage
   res.json({message: 'You are successfully logged out!'});
   }else {
     res.json({message: "You were never logged in!"})

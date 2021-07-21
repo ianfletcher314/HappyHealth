@@ -12,7 +12,7 @@ import Favorites from "./components/Favorites"
 import Recipes from "./components/Recipes";
 import Logout from "./components/Logout";
 import DrawerLoggedOut from "./components/DrawerLoggedOut";
-// const withAuth = require('../../utils/auth');
+
 
 export const UserContext = createContext({
   loggedIn: false
@@ -24,11 +24,6 @@ function  App () {
     loggedIn: false,
   })
   
-
- // state={
- //   loggedIn:false
- // }
- // {(1 ===1 ) ? <Drawer /> : <DrawerLoggedOut/>}
 
 return(
   
@@ -43,7 +38,6 @@ return(
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/logout" component={Logout} />
-          {/* <Route exact path="/favorites" component={Favorites} /> */}
       </div>
       </UserContext.Provider>
     </Router>
