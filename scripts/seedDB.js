@@ -1,14 +1,16 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-//COMMENT THIS CONNNECTION OUT WHEN USING ABOVE CONNECTION
+//COMMENT THIS CONNNECTION OUT AFTER TESTING
+// connection to mongo database
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb+srv://happyhealth:password12345@cluster0.iidhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  process.env.MONGODB_URI ||
+    "mongodb+srv://happyhealth:password12345@cluster0.iidhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   }
 );
 
@@ -17,17 +19,17 @@ const userSeed = [
     username: "spenserlogan",
     password: "password12345",
     email: "spenserlogan@gmail.com ",
-    userCreated: new Date(Date.now())
-  }
+    userCreated: new Date(Date.now()),
+  },
 ];
-db.User
-  .remove({})
+// function that seeds the database with the userSeed Above
+db.User.remove({})
   .then(() => db.User.collection.insertMany(userSeed))
-  .then(data => {
+  .then((data) => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
     process.exit(1);
-});
+  });
