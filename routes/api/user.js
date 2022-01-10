@@ -74,7 +74,6 @@ router.post("/login", async (req, res) => {
 
 // ------------------------ PUT ROUTE ADDS RECIPES TO FAVORITES
 router.put("/recipes", withAuth, (req, res) => {
-  // console.log(req.body)
   db.User.findByIdAndUpdate(
     //find the user where the id is equal to the session id
     req.session.user_id,
