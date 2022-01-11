@@ -35,30 +35,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// create states where the user's information can be saved. this info will be retrieved by the onclick function
 export default function SignUp() {
   const classes = useStyles();
   const history = useHistory();
 
+  // create states where the user's information can be saved. this info will be retrieved by the onclick function
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userName, setUserName] = useState("");
-
+  // create functions that handle the input change of the textfileds
   function handleEmailInputChange(event) {
     const value = event.target.value;
-    // console.log(value)
     setUserEmail(value);
   }
   function handleNameInputChange(event) {
     const value = event.target.value;
-    // console.log(value)
     setUserName(value);
   }
   function handlePasswordInputChange(event) {
     const value = event.target.value;
-    // console.log(value)
     setUserPassword(value);
   }
+  // function for button onCLick that uses axios post route
   function createUserRequest(event) {
     event.preventDefault();
     const data = {
@@ -77,7 +75,7 @@ export default function SignUp() {
         window.alert("Fill all fields");
       });
   }
-
+  // this section has the UI the user will be inputing information into
   return (
     <div className="home-body">
       <Container component="main" maxWidth="xs">
