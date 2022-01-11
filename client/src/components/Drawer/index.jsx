@@ -1,52 +1,51 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React from "react";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuIcon from "@material-ui/icons/Menu";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { withRouter, useLocation, Link } from "react-router-dom";
-import HomeIcon from '@material-ui/icons/Home';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
-import StoreIcon from '@material-ui/icons/Store';
-import EditIcon from '@material-ui/icons/Edit';
-import PersonIcon from '@material-ui/icons/Person';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import './style.css'
-
+import HomeIcon from "@material-ui/icons/Home";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import FormatListNumberedIcon from "@material-ui/icons/FormatListNumbered";
+import StoreIcon from "@material-ui/icons/Store";
+import EditIcon from "@material-ui/icons/Edit";
+import PersonIcon from "@material-ui/icons/Person";
+import FastfoodIcon from "@material-ui/icons/Fastfood";
+import "./style.css";
 
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
       flexShrink: 0,
     },
   },
   appBar: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
     },
   },
   // necessary for content to be below app bar
@@ -69,29 +68,29 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const {history}=props;
+  const { history } = props;
   const itemsList = [
     {
       text: "Home",
-      icon:<HomeIcon />,
-      onClick: () => history.replace('/')
+      icon: <HomeIcon />,
+      onClick: () => history.replace("/"),
     },
     {
       text: "Meal Plan",
-      icon:<FormatListNumberedIcon />,
-      onClick: () => history.replace('/recipes')
+      icon: <FormatListNumberedIcon />,
+      onClick: () => history.replace("/recipes"),
     },
     {
       text: "Favorites",
-      icon:<FastfoodIcon />,
-      onClick: () => history.replace('/favorites')
+      icon: <FastfoodIcon />,
+      onClick: () => history.replace("/favorites"),
     },
     {
       text: "Log Out",
-      icon:<EditIcon />,
-      onClick: () => history.replace('/logout')
-    }
-  ]
+      icon: <EditIcon />,
+      onClick: () => history.replace("/logout"),
+    },
+  ];
 
   const drawer = (
     <div>
@@ -99,25 +98,24 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {itemsList.map((item, index) => {
-          const {text,icon,onClick}=item;
-          return(
+          const { text, icon, onClick } = item;
+          return (
             // <Link></Link>
-          <ListItem button key={text} onClick={onClick}>
-            {icon && <ListItemIcon>{icon}</ListItemIcon>}
-            <ListItemText primary={text} />
-          </ListItem>
+            <ListItem button key={text} onClick={onClick}>
+              {icon && <ListItemIcon>{icon}</ListItemIcon>}
+              <ListItemText primary={text} />
+            </ListItem>
           );
-          })}
+        })}
       </List>
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
-    
     <div className={classes.root}>
-      
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
@@ -141,7 +139,7 @@ function ResponsiveDrawer(props) {
           <Drawer
             container={container}
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            anchor={theme.direction === "rtl" ? "right" : "left"}
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
@@ -172,8 +170,6 @@ function ResponsiveDrawer(props) {
     </div>
   );
 }
-
-
 
 ResponsiveDrawer.propTypes = {
   /**
